@@ -152,3 +152,12 @@ a{color:inherit;text-decoration:none}
 h1{
 	text-align: center;
 }
+
+select{
+	padding: 15px 20px;
+	background: rgba(255,255,255,.1);
+}
+
+select > option{
+	background-color: rgb(44, 69, 212);
+}

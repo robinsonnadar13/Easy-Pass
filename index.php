@@ -16,12 +16,12 @@
 		<div class="login-form">
 			<div class="sign-in-htm">
 			<div class="group">
-					<label for="name" class="label">Name</label>
-					<input id="name" type="text" class="input">
+					<label for="name1" class="label">Name</label>
+					<input id="name1" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="mobilenumber" class="label">Mobile Number</label>
-					<input id="mobilenumber" type="number" class="input">
+					<input id="mobilenumber" type="number" class="input" data-type="password">
 				</div>
 				<div class="group">
 					<label for="address" class="label">Address</label>
@@ -29,7 +29,14 @@
 				</div>
 				<div class="group">
 					<label for="noofmembers" class="label">Numbers Including Yourself: (Max 6)</label>
-					<input id="noofmembers" type="number" class="input">
+					<select name="noofmembers" id="noofmembers" class="input">
+  						<option value="1">1</option>
+  						<option value="2">2</option>
+  						<option value="3">3</option>
+  						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
 				</div>
 				<div class="group">
 					<label for="password" class="label">Secure Password (To Regenerate/Cancel Pass) Use minimum 6 characters.</label>
@@ -40,7 +47,6 @@
 				</div>
 				<div class="hr"></div>
 			</div>
-			<div class="login-form">
 			<div class="sign-up-htm">
 				<div class="group">
 					<label for="name" class="label">பெயர்</label>
@@ -66,7 +72,7 @@
 					<input type="submit" class="button" value="பதிவு">
 				</div>
 				<div class="hr"></div>
-			</div>
+			    </div>
 	</div>
 </div>
 </body>
