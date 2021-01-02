@@ -1,6 +1,15 @@
 <?php
 
+require_once "pdo.php";
+session_start();
+$failure = false; 
+
 if ( isset($_POST['submit'] ) ) {
+  
+	if ( strlen($_POST['name']) < 1 )  {
+		$failure = "Name is required";
+	  } 
+
 	header('Location: pass.php');
 }
 
@@ -25,8 +34,8 @@ if ( isset($_POST['submit'] ) ) {
 		<div class="login-form">
 			<div class="sign-in-htm">
 			<div class="group">
-					<label for="name1" class="label">Name</label>
-					<input id="name1" type="text" class="input">
+					<label for="name" class="label">Name</label>
+					<input id="name" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="mobilenumber" class="label">Mobile Number</label>
@@ -34,7 +43,7 @@ if ( isset($_POST['submit'] ) ) {
 				</div>
 				<div class="group">
 					<label for="address" class="label">Address</label>
-					<input id="name" type="text" class="input">
+					<input id="address" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="noofmembers" class="label">Numbers Including Yourself: (Max 6)</label>
