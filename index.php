@@ -1,10 +1,10 @@
 <?php
 
-require_once "pdo.php";
+require_once "Signup/pdo.php";
 session_start();
 $failure = false; 
 
-require 'Dbconnect.php';
+require 'Signup/Dbconnect.php';
 $stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -34,8 +34,8 @@ if ( isset($_POST['submit'] ) ) {
 		$failure = "Address is required";
 	} 
 
-	elseif ( strlen($_POST['password']) < 1 )  {
-		$failure = "Password is required";
+	elseif ( strlen($_POST['password']) < 6 )  {
+		$failure = "Password should consist of minimum 6 characters.";
 	} 
 	
 	else{

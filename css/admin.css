@@ -1,0 +1,275 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+/* --------------------CSS----------------- */
+
+.box {
+	background: linear-gradient(#526494, #604484);
+	margin: 15px auto 0;
+	border-radius: 5px;
+   width: 300px;
+}
+
+.box__header {
+	padding: 15px 25px;
+	position: relative;
+}
+
+.box__header-title {
+	color: #fff;
+	font-size: 18px;
+}
+
+.box__body {
+	padding: 0 25px;
+}
+
+/* STATS */
+
+.stats {
+	color: #fff;
+	position: relative;
+	padding-bottom: 25px;
+}
+
+.stats__amount {
+	font-size: 42px;
+	font-weight: bold;
+	line-height: 1.2;
+}
+
+.stats__caption {
+	font-size: 18px;
+
+}
+
+.stats__change {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	text-align: right;
+	color: #B1B7C8;
+}
+
+.stats__value {
+	font-size: 18px;
+}
+
+.stats__period {
+	font-size: 14px;
+}
+
+.stats__value--positive {
+	color: #AEDC6F;
+}
+
+.stats__value--negative {
+	color: #FB5055;
+}
+
+.stats--main .stats__amount {
+	font-size: 54px;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #787D80;
+    letter-spacing: .2px;
+ }
+ 
+ .container {
+    width: 950px;
+    margin: auto;
+ }
+ 
+ .filterBar {
+    margin: 20px 0px;
+ }
+ 
+ label {
+    font-weight: 600;
+    text-transform: uppercase;
+ }
+ table {
+    width: 100%;
+ }
+ 
+ th, td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+ }
+ 
+ th {
+    text-align: left;
+    background-color: #F2F2F2;
+    color: #65696B;
+ }
+ 
+ tr:nth-child(odd) {
+    background: #F9F9F9;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+ }
+ 
+ tr:nth-child(even) {
+    background: #FFF;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+ }
+ 
+ tr:hover {
+    background-color: #EBF5FB;
+    cursor: default;
+    border: 1px solid #67B2E4;
+ }
+ 
+ .username {
+    color: #3498DB;
+ }
+ 
+ .username:hover, a:hover {
+    color: #3498DB;
+    cursor: pointer;
+    text-decoration: underline;
+ }
+ 
+ /* .activeUser {
+    color: #03AB61;
+ } */
+ 
+ /* .bannedUser, .suspendedUser {
+    font-weight: 600;
+ } */
+ .bannedUser {
+    color: red;
+ }
+ 
+ .suspendedUser {
+    color: #FF8C00;
+ }
+ 
+ .commenter {
+    color: #9A9DA0;
+ }
+ 
+ .admin, .staff, .moderator {
+    font-weight: 600;
+ }
+ 
+ a {
+    color: #3498DB;
+    text-decoration: none;
+ }
+ 
+ nav {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #E9E9E9;
+ }
+ nav ul li {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+ }
+ 
+ nav ul li {
+   text-align: center;
+   padding: 20px 16px;
+   text-decoration: none;
+ }
+ 
+ .talk {
+    text-transfor: uppercase;
+    font-size: 24px;
+ }
+ 
+ .active {
+    background-color: #F77160;
+    color: white;
+ }
+ 
+ .roleHead {
+    width: 115px;
+ }
+ 
+ .statusHead {
+    width: 115px;
+ }
+ 
+ i {
+    float: right;
+    padding: 0px 15px;
+    color: #787D80;
+    font-size: 12px;
+ }
+ 
+ td.activeUser:hover, td.suspendedUser:hover, td.bannedUser:hover, td.commenter, td.staff, td.admin, td.moderator {
+    cursor: pointer;
+ }
+ 
+ tr.table-header {
+   border: 1px solid #BBBEBF;
+ }
+ 
+ .styled-select select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 100%;
+ }
+ 
+ .styled-select {
+    margin-top: 5px;
+    width:200px;
+    border-radius: 2px;
+    border: 1px solid #9A9DA0;
+    color: #3B4A53;
+ }
+ 
+ .filter-ui, .search-ui {
+    display: inline-block;
+ }
+ 
+ input[type=text] {
+   padding: 6px;
+   margin-top: 5px;
+   font-size: 14px;
+   width: 300px;
+   border: 1px solid #9A9DA0;
+   border-radius: 2px;
+ }
+ 
+ .search-container button {
+   padding: 10px 5px;
+   margin-right: 16px;
+   background: #ddd;
+   font-size: 17px;
+   border: none;
+   border-radius: 2px;
+   cursor: pointer;
+ }
+ 
+ 
+ ::-webkit-input-placeholder {
+   color: #BBBEBF;
+   font-size: 13px;
+ }
+ ::-moz-placeholder {
+   color: #BBBEBF;
+   font-size: 13px;
+ }
+ :-ms-input-placeholder {
+   color: #BBBEBF;
+   font-size: 13px;
+ }
+ ::placeholder {
+   color: #BBBEBF;
+   font-size: 13px;
+ }
+ 
+ 
