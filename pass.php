@@ -1,11 +1,20 @@
+<?php
+
+session_start();
+$name = $_SESSION['name'];
+$mobilenumber = $_SESSION['mobilenumber'];
+$noofmembers = $_SESSION['noofmembers'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Quick Pass</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="icon" type="image/png" href="images/favicon.png">
-	<link rel="stylesheet" type="text/css" href="css/pass.css">
+  	<link rel="icon" type="image/png" href="Images/Anthony.png" alt="St. Anthony Logo">
+  	<link rel="stylesheet" type="text/css" href="css/pass.css">
 </head>
 <body>
 <div class="feedback" id="oldX"></div><div class="feedback" id="oldY"></div>
@@ -22,18 +31,18 @@
       <div class="row normRow">
         <div>
           <div class="label">Name</div>
-          <div class="col">Robinson Nadar</div>
+          <div class="col"><?php echo htmlentities($name);?></div>
         </div>
         
       </div>
       <div class="row normRow">
         <div class="col6">
           <div class="label">Admit</div>
-          <div class="countdown">4</div>
+          <div class="countdown"><?php echo htmlentities($noofmembers);?></div>
         </div>
         <div class="col6">
           <div class="label">Phone number</div>
-          <div>8108909113</div>
+          <div><?php echo htmlentities($mobilenumber);?></div>
         </div>
       </div>
       <div class="row normRow">
@@ -50,7 +59,7 @@
       </div>
       <div class="row">
         <div class="sparkler"></div>
-      <img id="qr" src='https://chart.googleapis.com/chart?cht=qr&chl=UA%201136%2098745-34538459&chs=180x180&choe=UTF-8&chld=L|2' alt=''><div class="smalltext">Scan the QR Code to get the chapel location.</div>
+      <img id="qr" src='Images/QR.jpeg' alt='QR Code'><div class="smalltext">Scan the QR Code to get the chapel location.</div>
       </div>
     </div>
   </div>

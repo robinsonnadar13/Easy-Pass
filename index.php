@@ -4,14 +4,120 @@ require_once "pdo.php";
 session_start();
 $failure = false; 
 
+require 'Dbconnect.php';
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
+$stmt->execute();
+$result = $stmt->get_result();
+$row=$result->fetch_assoc();
+$seats = 100 - $row['SUM(noofmembers)'];               
+
+try {
+
 if ( isset($_POST['submit'] ) ) {
+
+	$salt = "dhjl@bxjkns238njknwqs".$_POST['password'];
+    $hashed = hash('md5',$salt);
   
 	if ( strlen($_POST['name']) < 1 )  {
 		$failure = "Name is required";
-	  } 
+	} 
 
-	header('Location: pass.php');
+	elseif ( strlen($_POST['mobilenumber']) < 1 )  {
+		$failure = "Mobile Number is required";
+	} 
+
+	elseif (!preg_match('/^[0-9]{10}+$/', $_POST['mobilenumber'])){
+		$failure = "Mobile number should consist of 10 numbers.";
+	} 
+
+	elseif ( strlen($_POST['address']) < 1 )  {
+		$failure = "Address is required";
+	} 
+
+	elseif ( strlen($_POST['password']) < 1 )  {
+		$failure = "Password is required";
+	} 
+	
+	else{
+			$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password)
+			VALUES (:name, :mobilenumber, :address, :noofmembers, :password)";
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute(array(
+			':name' => $_POST['name'],
+			':mobilenumber' => $_POST['mobilenumber'],
+			':address' => $_POST['address'],
+			':noofmembers' => $_POST['noofmembers'],
+			':password' => $hashed));  
+			
+			session_start();
+			$_SESSION['name'] = $_POST['name'];
+			$_SESSION['mobilenumber'] = $_POST['mobilenumber'];
+			$_SESSION['noofmembers'] = $_POST['noofmembers'];
+
+			header('Location: pass.php');
+		}
+	}
 }
+	  catch (\PDOException $e) {
+		if ($e->errorInfo[1] == 1062) {
+			$failure = "Mobile Number already registered.";
+		}
+	}
+
+	try {
+
+		if ( isset($_POST['submit1'] ) ) {
+		
+			$salt1 = "dhjl@bxjkns238njknwqs".$_POST['password1'];
+			$hashed1 = hash('md5',$salt1);
+		  
+			if ( strlen($_POST['name1']) < 1 )  {
+				$failure1 = "உங்கள் பெயர் தேவை";
+			} 
+		
+			elseif ( strlen($_POST['mobilenumber1']) < 1 )  {
+				$failure1 = "உங்கள் தொலைபேசி எண் தேவை";
+			} 
+		
+			elseif (!preg_match('/^[0-9]{10}+$/', $_POST['mobilenumber1'])){
+				$failure1 = "உங்கள் கைப்பேசி எண் 10 எண்ணிக்கை (10 digits)";
+			} 
+		
+			elseif ( strlen($_POST['address1']) < 1 )  {
+				$failure1 = "முகவரி தேவை";
+			} 
+		
+			elseif ( strlen($_POST['password1']) < 1 )  {
+				$failure1 = "Password தேவை";
+			} 
+			
+			else{
+					$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password)
+					VALUES (:name, :mobilenumber, :address, :noofmembers, :password)";
+					$stmt = $pdo->prepare($sql);
+					$stmt->execute(array(
+					':name' => $_POST['name1'],
+					':mobilenumber' => $_POST['mobilenumber1'],
+					':address' => $_POST['address1'],
+					':noofmembers' => $_POST['noofmembers1'],
+					':password' => $hashed1));  
+					
+					session_start();
+					$_SESSION['name'] = $_POST['name1'];
+					$_SESSION['mobilenumber'] = $_POST['mobilenumber1'];
+					$_SESSION['noofmembers'] = $_POST['noofmembers1'];
+		
+					header('Location: pass.php');
+				}
+			}
+		}
+			  catch (\PDOException $e) {
+				if ($e->errorInfo[1] == 1062) {
+					$failure = "Mobile Number already registered.";
+				}
+			}
+	
+
 
 ?> 
 
@@ -21,29 +127,39 @@ if ( isset($_POST['submit'] ) ) {
 	<title>Quick Pass</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="icon" type="image/png" href="images/favicon.png">
+  	<link rel="icon" type="image/png" href="Images/Anthony.png">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 <h1>Quick Pass</h1>
 <div class="login-wrap">
+
 	<div class="login-html">
+	<h3 style="color: white;">Number of Seats Left: <a id ="seatsleft" style="color: yellow;"><?php echo htmlentities($seats); ?></a></h3>
+	<br />
 	<form method="post">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">English</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Tamil</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-			<div class="group">
+
+			<?php
+            if ( $failure !== false ) {
+	        echo('<p style="color: red; text-align:centre;">'.htmlentities($failure)."</p>\n");
+			}
+			?>
+
+			    <div class="group">
 					<label for="name" class="label">Name</label>
-					<input id="name" type="text" class="input">
+					<input id="name" type="text" class="input" name="name">
 				</div>
 				<div class="group">
 					<label for="mobilenumber" class="label">Mobile Number</label>
-					<input id="mobilenumber" type="number" class="input" data-type="password">
+					<input id="mobilenumber" type="number" class="input" name="mobilenumber" minlength="10" maxlength="10">
 				</div>
 				<div class="group">
 					<label for="address" class="label">Address</label>
-					<input id="address" type="text" class="input">
+					<input id="address" type="text" name="address" class="input">
 				</div>
 				<div class="group">
 					<label for="noofmembers" class="label">Numbers Including Yourself: (Max 6)</label>
@@ -58,7 +174,7 @@ if ( isset($_POST['submit'] ) ) {
 				</div>
 				<div class="group">
 					<label for="password" class="label">Secure Password (To Regenerate/Cancel Pass) Use minimum 6 characters.</label>
-					<input id="password" type="password" class="input">
+					<input id="password" type="password" class="input" name="password">
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Book" name="submit">
@@ -67,22 +183,27 @@ if ( isset($_POST['submit'] ) ) {
             </form> 
 			</div>
 			<div class="sign-up-htm">
+			<?php
+            if ( $failure1 !== false ) {
+	        echo('<p style="color: red; text-align:centre;">'.htmlentities($failure1)."</p>\n");
+			}
+			?>
 			<form method="post">
 				<div class="group">
-					<label for="name" class="label">பெயர்</label>
-					<input id="name" type="text" class="input">
+					<label for="name1" class="label">பெயர்</label>
+					<input id="name1" type="text" class="input" name="name1">
 				</div>
 				<div class="group">
-					<label for="mobilenumber" class="label">கைபேசி எண்</label>
-					<input id="mobilenumber" type="number" class="input" data-type="password">
+					<label for="mobilenumber1" class="label">கைபேசி எண்</label>
+					<input id="mobilenumber1" type="number" class="input" name="mobilenumber1">
 				</div>
 				<div class="group">
-					<label for="address" class="label">முகவரி</label>
-					<input id="address" type="text" class="input">
+					<label for="address1" class="label">முகவரி</label>
+					<input id="address1" type="text" class="input" name="address1">
 				</div>
 				<div class="group">
-					<label for="noofmembers" class="label">உங்களை உள்ளடக்கிய எண்கள்: (அதிகபட்சம் 6)</label>
-					<select name="noofmembers" id="noofmembers" class="input">
+					<label for="noofmembers1" class="label">நீங்கள் உட்பட கலந்துகொள்ளும் நபர்களின் எண்ணிக்கை: (அதிகபட்சம் 6)</label>
+					<select name="noofmembers1" id="noofmembers1" class="input" name="noofmembers1">
   						<option value="1">1</option>
   						<option value="2">2</option>
   						<option value="3">3</option>
@@ -92,11 +213,11 @@ if ( isset($_POST['submit'] ) ) {
 					</select>
 				</div>
 				<div class="group">
-					<label for="password" class="label">உங்கள் பின்னை (PIN) உருவாக்கவும்</label>
-					<input id="password" type="password" class="input">
+					<label for="password1" class="label">உங்கள் Password உருவாக்கவும்</label>
+					<input id="password1" type="password" class="input" name="password1">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="பதிவு" name="submit">
+					<input type="submit" class="button" value="பதிவு" name="submit1">
 				</div>
 				<div class="hr"></div>
 				</div>
