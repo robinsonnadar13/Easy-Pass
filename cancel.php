@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(0);
 require_once "Signup/pdo.php";
 $failure = false; 
 $comment = false;
@@ -32,20 +33,18 @@ if ( ! isset($_SESSION["adminname"] )) {
             ':pw' => $hashed));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // if ($row === false) {
-            //   $failure = "Invalid credentials.";
-            // }
-            // else {
-            //     $sql = "DELETE FROM booking WHERE
-            //     passno = :pn AND password = :pw";
-            //     $stmt = $pdo->prepare($sql);
-            //     $stmt->execute(array(
-            //     ':pn' => $_POST['passno'],
-            //     ':pw' => $hashed));
-            //     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            //     $comment = "Pass Successfully Cancelled.";
+            if ($row === false) {
+              $failure = "Invalid credentials.";
+            }
+            else {
+                $sql = "DELETE FROM booking WHERE
+                passno = :pn";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(array(
+				':pn' => $_POST['passno']));
+				$comment = "Pass Successfully Cancelled.";
     
-            //  }
+             }
           
             }
         }
@@ -57,28 +56,38 @@ if ( ! isset($_SESSION["adminname"] )) {
             $salt1 = "dhjl@bxjkns238njknwqs".$_POST['password1'];
             $hashed1 = hash('md5',$salt1);
           
-            if ( strlen($_POST['name1']) < 1 )  {
-                $failure = "Name is required";
+            if ( strlen($_POST['passno1']) < 1 )  {
+                $failure1 = "Name is required";
             } 
         
             elseif ( strlen($_POST['password1']) < 1 )  {
-                $failure = "Password is required.";
+                $failure1 = "Password is required.";
             } 
             
             else{
     
-                // $sql = "INSERT INTO admin (name, password)
-                // VALUES (:name, :password)";
-                // $stmt = $pdo->prepare($sql);
-                // $stmt->execute(array(
-                // ':name' => $_POST['name1'],
-                // ':password' => $hashed1));
-
-                // session_start();
-                // $_SESSION['adminname'] = $_POST['name1'];
-                // header('Location: admin.php');
-              
-                 }
+				$sql = "SELECT name FROM booking
+				WHERE passno = :pn AND password = :pw";
+				$stmt = $pdo->prepare($sql);
+				$stmt->execute(array(
+				':pn' => $_POST['passno1'],
+				':pw' => $hashed1));
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+				if ($row === false) {
+				  $failure1 = "Invalid credentials.";
+				}
+				else {
+					$sql = "DELETE FROM booking WHERE
+					passno = :pn";
+					$stmt = $pdo->prepare($sql);
+					$stmt->execute(array(
+					':pn' => $_POST['passno1']));
+					$comment1 = "Pass வெற்றிகரமாக ரத்து செய்யப்பட்டது.";
+		
+				 }
+			  
+				}
             }
 
 ?>
@@ -135,6 +144,12 @@ if ( ! isset($_SESSION["adminname"] )) {
 			<?php
             if ( $failure1 !== false ) {
 	        echo('<p style="color: red; text-align:centre;">'.htmlentities($failure1)."</p>\n");
+			}
+            ?>
+            
+            <?php
+            if ( $comment1 !== false ) {
+	        echo('<p style="color: yellow; text-align:centre;">'.htmlentities($comment1)."</p>\n");
 			}
 			?>
 			<form method="post">
