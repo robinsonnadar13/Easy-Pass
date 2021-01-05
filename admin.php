@@ -53,30 +53,44 @@ $seats = 100 - $row['SUM(noofmembers)'];
    </div>
 </section>
 
-<table>
-   <tr class="table-header">
-      <th>Pass No</th>
-      <th>Name</th>
-      <th>Mobile Number</th>
-      <th>Address</th>
-      <th>Attendees</th>
-   </tr>
-   <?php
-                        require 'Signup/Dbconnect.php';
-                        require "Signup/pdo.php";
-                        $stmt = $conn->prepare("SELECT * FROM booking");
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        while($row=$result->fetch_assoc()):
+<?php 
+include "config.php";
+?>
+
+<div class="container">
+ 
+ <form method='post' action='download.php'>
+ 
+  <table style='border-collapse:collapse;'>
+    <tr>
+     <th>Pass No</th>
+     <th>Name</th>
+     <th>Mobile Number</th>
+     <th>Address</th>
+     <th>Attendees</th>
+    </tr>
+    <?php 
+     $query = "SELECT * FROM booking";
+     $result = mysqli_query($con,$query);
+     $user_arr = array();
+     while($row = mysqli_fetch_array($result)){
+      $id = $row['passno'];
+      $uname = $row['name'];
+      $name = $row['mobilenumber'];
+      $gender = $row['address'];
+      $email = $row['noofmembers'];
+      $user_arr[] = array($id,$uname,$name,$gender,$email);
    ?>
-   <tr>
-      <td class="activeUser"><?= $row['passno'] ?></td>
-      <td class="username"><?= $row['name'] ?></td>
-      <td class="email"><?= $row['mobilenumber'] ?></a></td>
-      <td><?= $row['address'] ?></td>
-      <td class="commenter"><?= $row['noofmembers'] ?></td>
-   </tr>
-   <?php endwhile; ?>
+      <tr>
+       <td><?php echo $id; ?></td>
+       <td><?php echo $uname; ?></td>
+       <td><?php echo $name; ?></td>
+       <td><?php echo $gender; ?></td>
+       <td><?php echo $email; ?></td>
+      </tr>
+   <?php
+    }
+   ?>
    <tr>
       <td class="activeUser"></td>
       <td class="username"></td>
@@ -84,19 +98,16 @@ $seats = 100 - $row['SUM(noofmembers)'];
       <td>Total</td>
       <td class="commenter"><?php echo htmlentities($seatsbooked); ?></td>
    </tr>
-</table>
+   </table>
+   <?php 
+    $serialize_user_arr = serialize($user_arr);
+   ?>
+  <textarea name='export_data' style='display: none;'><?php echo $serialize_user_arr; ?></textarea>
+  <input type='submit' class="stylebutton" value='Export in Excel' name='Export'>
+  <input type = "submit" class="stylebutton" style="float:right;" value= 'Print' name='Print' onclick="window.print()">
+  </form>
+ 
 </div>
-
-<div>
-            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
-                      enctype="multipart/form-data">
-                  <div class="form-group">
-                            <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
-                            </div>
-                   </div>                    
-            </form>           
- </div>
 
 </body>
 </html>

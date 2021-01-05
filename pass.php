@@ -4,6 +4,7 @@ session_start();
 $name = $_SESSION['name'];
 $mobilenumber = $_SESSION['mobilenumber'];
 $noofmembers = $_SESSION['noofmembers'];
+$passno = $_SESSION['passno'];
 
 ?>
 
@@ -25,7 +26,7 @@ $noofmembers = $_SESSION['noofmembers'];
         <img class="logo" src="Images/logo.jpg" />
         <div class="right">
           <div class="label">Pass Number</div>
-          <div class="num">UA 1136</div>
+          <div class="num"><?php echo htmlentities($passno);?></div>
         </div>
       </div>
       <div class="row normRow">

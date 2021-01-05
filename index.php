@@ -5,18 +5,28 @@ session_start();
 $failure = false; 
 
 require 'Signup/Dbconnect.php';
+$stmt = $conn->prepare("SELECT MAX(id) FROM booking");
+$stmt->execute();
+$result = $stmt->get_result();
+$row=$result->fetch_assoc();
+$suffix = "AN ";
+$pass = 101 + $row['MAX(id)'];  
+$passno = $suffix.$pass;
+
+require 'Signup/Dbconnect.php';
 $stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
-$seats = 100 - $row['SUM(noofmembers)'];               
+$seats = 100 - $row['SUM(noofmembers)'];       
+
 
 try {
 
 if ( isset($_POST['submit'] ) ) {
 
 	$salt = "dhjl@bxjkns238njknwqs".$_POST['password'];
-    $hashed = hash('md5',$salt);
+	$hashed = hash('md5',$salt);
   
 	if ( strlen($_POST['name']) < 1 )  {
 		$failure = "Name is required";
@@ -26,33 +36,38 @@ if ( isset($_POST['submit'] ) ) {
 		$failure = "Mobile Number is required";
 	} 
 
-	elseif (!preg_match('/^[0-9]{10}+$/', $_POST['mobilenumber'])){
-		$failure = "Mobile number should consist of 10 numbers.";
+	elseif ( strlen($_POST['mobilenumber']) !== 10 )  {
+		$failure = "Mobile Number should consist of 10 digits.";
 	} 
 
 	elseif ( strlen($_POST['address']) < 1 )  {
 		$failure = "Address is required";
 	} 
 
-	elseif ( strlen($_POST['password']) < 6 )  {
-		$failure = "Password should consist of minimum 6 characters.";
+	elseif ( strlen($_POST['password']) < 1 )  {
+		$failure = "Password is required.";
 	} 
 	
-	else{
-			$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password)
-			VALUES (:name, :mobilenumber, :address, :noofmembers, :password)";
+	else{	
+		
+			$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password, passno)
+			VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 			$stmt = $pdo->prepare($sql);
 			$stmt->execute(array(
 			':name' => $_POST['name'],
 			':mobilenumber' => $_POST['mobilenumber'],
 			':address' => $_POST['address'],
 			':noofmembers' => $_POST['noofmembers'],
+			':passno' => $passno,
 			':password' => $hashed));  
+
+			 
 			
 			session_start();
 			$_SESSION['name'] = $_POST['name'];
 			$_SESSION['mobilenumber'] = $_POST['mobilenumber'];
 			$_SESSION['noofmembers'] = $_POST['noofmembers'];
+			$_SESSION['passno'] = $passno;
 
 			header('Location: pass.php');
 		}
@@ -79,7 +94,7 @@ if ( isset($_POST['submit'] ) ) {
 				$failure1 = "உங்கள் தொலைபேசி எண் தேவை";
 			} 
 		
-			elseif (!preg_match('/^[0-9]{10}+$/', $_POST['mobilenumber1'])){
+			elseif ( strlen($_POST['mobilenumber1']) !== 10 )  {
 				$failure1 = "உங்கள் கைப்பேசி எண் 10 எண்ணிக்கை (10 digits)";
 			} 
 		
@@ -92,20 +107,23 @@ if ( isset($_POST['submit'] ) ) {
 			} 
 			
 			else{
-					$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password)
-					VALUES (:name, :mobilenumber, :address, :noofmembers, :password)";
+
+					$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password, passno)
+					VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 					$stmt = $pdo->prepare($sql);
 					$stmt->execute(array(
 					':name' => $_POST['name1'],
 					':mobilenumber' => $_POST['mobilenumber1'],
 					':address' => $_POST['address1'],
 					':noofmembers' => $_POST['noofmembers1'],
+					':passno' => $passno,
 					':password' => $hashed1));  
 					
 					session_start();
 					$_SESSION['name'] = $_POST['name1'];
 					$_SESSION['mobilenumber'] = $_POST['mobilenumber1'];
 					$_SESSION['noofmembers'] = $_POST['noofmembers1'];
+					$_SESSION['passno'] = $passno;
 		
 					header('Location: pass.php');
 				}
@@ -155,7 +173,7 @@ if ( isset($_POST['submit'] ) ) {
 				</div>
 				<div class="group">
 					<label for="mobilenumber" class="label">Mobile Number</label>
-					<input id="mobilenumber" type="number" class="input" name="mobilenumber" minlength="10" maxlength="10">
+					<input id="mobilenumber" type="number" class="input" name="mobilenumber">
 				</div>
 				<div class="group">
 					<label for="address" class="label">Address</label>
