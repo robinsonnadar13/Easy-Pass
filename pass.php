@@ -50,7 +50,7 @@ $passno = $_SESSION['passno'];
       
         <div class="col6">
           <div class="label">Date</div>
-          <div>26th January 2020</div>
+          <div>17th January 2020</div>
         </div>
         <div class="col6">
           <div class="label">Time</div>
