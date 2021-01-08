@@ -44,7 +44,7 @@ if ( isset($_POST['submit'] ) ) {
 		$failure = "Address is required";
 	} 
 
-	elseif ( strlen($_POST['password']) < 1 )  {
+	elseif ( strlen($_POST['password']) < 3 )  {
 		$failure = "Password is required.";
 	} 
 	
@@ -102,7 +102,7 @@ if ( isset($_POST['submit'] ) ) {
 				$failure1 = "முகவரி தேவை";
 			} 
 		
-			elseif ( strlen($_POST['password1']) < 1 )  {
+			elseif ( strlen($_POST['password1']) < 3 )  {
 				$failure1 = "Password தேவை";
 			} 
 			
@@ -191,11 +191,15 @@ if ( isset($_POST['submit'] ) ) {
 					</select>
 				</div>
 				<div class="group">
-					<label for="password" class="label">Secure Password (To Regenerate/Cancel Pass) Use minimum 6 characters.</label>
+					<label for="password" class="label">Secure Password (To Regenerate/Cancel Pass) Use minimum 3 characters.</label>
 					<input id="password" type="password" class="input" name="password">
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Book" name="submit">
+				</div>
+				<div class="forgot">
+					<br />
+					<a href="cancel.php">Want to cancel your pass?</a>
 				</div>
 				<div class="hr"></div>
             </form> 
@@ -236,6 +240,10 @@ if ( isset($_POST['submit'] ) ) {
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="பதிவு" name="submit1">
+				</div>
+				<div class="forgot">
+					<br />
+					<a href="cancel.php">உங்கள் பாஸை ரத்து செய்ய வேண்டுமா?</a>
 				</div>
 				<div class="hr"></div>
 				</div>

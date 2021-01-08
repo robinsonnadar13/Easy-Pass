@@ -161,3 +161,13 @@ select{
 select > option{
 	background-color: rgb(44, 69, 212);
 }
+
+.forgot a {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	color:  greenyellow;
+	font-weight: 400;
+	text-decoration: none;
+	align-self: center;
+  }

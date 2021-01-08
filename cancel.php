@@ -6,18 +6,20 @@ $failure = false;
 $comment = false;
 
 session_start();
-if ( ! isset($_SESSION["adminname"] )) {
-    die("ACCESS DENIED");
-}
+
 
     if ( isset($_POST['submit'] ) ) {
     
         $salt = "dhjl@bxjkns238njknwqs".$_POST['password'];
         $hashed = hash('md5',$salt);
       
-        if ( strlen($_POST['passno']) < 1 )  {
-            $failure = "Pass Number is required";
-        } 
+        if ( strlen($_POST['mobilenumber']) < 1 )  {
+			$failure = "Mobile Number is required";
+		} 
+	
+		elseif ( strlen($_POST['mobilenumber']) !== 10 )  {
+			$failure = "Mobile Number should consist of 10 digits.";
+		} 
     
         elseif ( strlen($_POST['password']) < 1 )  {
             $failure = "Password is required.";
@@ -26,10 +28,10 @@ if ( ! isset($_SESSION["adminname"] )) {
         else{
 
             $sql = "SELECT name FROM booking
-            WHERE passno = :pn AND password = :pw";
+            WHERE mobilenumber = :mn AND password = :pw";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
-            ':pn' => $_POST['passno'],
+            ':mn' => $_POST['mobilenumber'],
             ':pw' => $hashed));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -38,11 +40,11 @@ if ( ! isset($_SESSION["adminname"] )) {
             }
             else {
                 $sql = "DELETE FROM booking WHERE
-                passno = :pn";
+                mobilenumber = :mn";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array(
-				':pn' => $_POST['passno']));
-				$comment = "Pass Successfully Cancelled.";
+				':mn' => $_POST['mobilenumber']));
+				header("Location: thankyou.php");
     
              }
           
@@ -56,9 +58,13 @@ if ( ! isset($_SESSION["adminname"] )) {
             $salt1 = "dhjl@bxjkns238njknwqs".$_POST['password1'];
             $hashed1 = hash('md5',$salt1);
           
-            if ( strlen($_POST['passno1']) < 1 )  {
-                $failure1 = "Name is required";
-            } 
+            if ( strlen($_POST['mobilenumber1']) < 1 )  {
+				$failure1 = "உங்கள் தொலைபேசி எண் தேவை";
+			} 
+		
+			elseif ( strlen($_POST['mobilenumber1']) !== 10 )  {
+				$failure1 = "உங்கள் கைப்பேசி எண் 10 எண்ணிக்கை (10 digits)";
+			} 
         
             elseif ( strlen($_POST['password1']) < 1 )  {
                 $failure1 = "Password is required.";
@@ -67,10 +73,10 @@ if ( ! isset($_SESSION["adminname"] )) {
             else{
     
 				$sql = "SELECT name FROM booking
-				WHERE passno = :pn AND password = :pw";
+				WHERE mobilenumber = :mn AND password = :pw";
 				$stmt = $pdo->prepare($sql);
 				$stmt->execute(array(
-				':pn' => $_POST['passno1'],
+				':mn' => $_POST['mobilenumber1'],
 				':pw' => $hashed1));
 				$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	
@@ -79,10 +85,11 @@ if ( ! isset($_SESSION["adminname"] )) {
 				}
 				else {
 					$sql = "DELETE FROM booking WHERE
-					passno = :pn";
+					mobilenumber = :mn";
 					$stmt = $pdo->prepare($sql);
 					$stmt->execute(array(
-					':pn' => $_POST['passno1']));
+					':mn' => $_POST['mobilenumber1']));
+					header("Location: thank.php");
 					$comment1 = "Pass வெற்றிகரமாக ரத்து செய்யப்பட்டது.";
 		
 				 }
@@ -127,8 +134,8 @@ if ( ! isset($_SESSION["adminname"] )) {
 			?>
 
 			    <div class="group">
-					<label for="passno" class="label">Pass No</label>
-					<input id="passno" type="text" class="input" name="passno">
+					<label for="mobilenumber" class="label">Mobile Number</label>
+					<input id="mobilenumber" type="number" class="input" name="mobilenumber">
 				</div>
 				<div class="group">
 					<label for="password" class="label">Password</label>
@@ -153,9 +160,9 @@ if ( ! isset($_SESSION["adminname"] )) {
 			}
 			?>
 			<form method="post">
-				<div class="group">
-					<label for="passno1" class="label">PASS எண்</label>
-					<input id="passno1" type="text" class="input" name="passno1">
+			    <div class="group">
+					<label for="mobilenumber1" class="label">கைபேசி எண்</label>
+					<input id="mobilenumber1" type="number" class="input" name="mobilenumber1">
 				</div>
 				<div class="group">
 					<label for="password1" class="label">Password</label>
