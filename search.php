@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(0);
 session_start();
 if ( ! isset($_SESSION["adminname"] )) {
     die("ACCESS DENIED");
@@ -38,7 +40,7 @@ $seats = 100 - $row['SUM(noofmembers)'];
       <li class="talk">Admin</li>
       <li><a href="admin.php">Attendees</a></li>
       <li><a href="stats.php">Stats</a></li>
-      <li><a href="Credentials.php">Update</a></li>
+      <!--<li><a href="Credentials.php">Update</a></li>-->
       <li style="float:right"><a href="Signup/logout.php">Log Out</a></li>
    </ul>
 </nav>

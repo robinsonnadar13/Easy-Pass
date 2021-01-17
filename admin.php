@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 session_start();
 if ( ! isset($_SESSION["adminname"] )) {
     die("ACCESS DENIED");
@@ -11,7 +11,7 @@ if ( isset($_POST['search'] ) ) {
    return;
 }
 
-$totalseatsyoucanbook = 100;
+$totalseatsyoucanbook = 78;
 
 require 'Signup/Dbconnect.php';
 $stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
@@ -39,7 +39,7 @@ $seats = $totalseatsyoucanbook - $row['SUM(noofmembers)'];
       <li class="talk">Admin</li>
       <li class="active">Attendees</li>
       <li><a href="stats.php">Stats</a></li>
-      <li><a href="credentials.php">Update</a></li>
+      <!--<li><a href="credentials.php">Update</a></li>-->
       <li style="float:right"><a href="Signup/logout.php">Log Out</a></li>
    </ul>
 </nav>

@@ -1,4 +1,6 @@
-
+<?php
+error_reporting(0);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
 .header{margin-bottom:10px}
 .setting-wrap{text-align:center}
 h1{font-size:26px}
-.footer{padding:20px;color:#CCC}
+.footer{padding:20px;color:brown;}
 @media all and (max-width: 480px) {
 .languageSwicher{margin-top:7px}
 }
@@ -29,21 +31,33 @@ h1{font-size:26px}
 </head>
 <body>
     <div>
-        <div class="header col-xs-12" style="background-color: rgb(217, 49, 53);">
+        <div class="header col-xs-12" style="background-color: brown;">
             <div class="col-xs-2 "></div>
             <div class="col-xs-8 text-center logo">
                 <h1 class="title">St. Anthony's Chapel</h1>
             </div>
 
         </div>
-        <div class="container main">
+        <br />
+        <br />
+        <div class="text-center">
                 
-        <div class=" setting-wrap">
+        <div>
         <h1>Sorry, All Seats have been booked!</h1>
         Keep Checking, you might get a pass if someone else cancels.
         </div>
-
+        
+        <br />
+        <!--</div>-->
+        
+        <!--<div class="container main">-->
+        <!--<div class=" setting-wrap">-->
+        <h1>மன்னிக்கவும், அனைத்து இருக்கைகளும் முன்பதிவு செய்யப்பட்டுள்ளன!</h1>
+        தொடர்ந்து சோதனை செய்யுங்கள், வேறு யாராவது ரத்துசெய்தால் உங்களுக்கு பாஸ் கிடைக்கும்.
         </div>
+        </div>
+        <br />
+        <br />
         <div class="container footer">
                 <div class="text-center">
                 <footer>&copy; Copyright 2021 St.Anthony Chapel, Ghatkopar</footer>

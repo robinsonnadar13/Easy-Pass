@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(0);
 require_once "Signup/pdo.php";
 session_start();
 $totalseatsyoucanbook = 100;
@@ -34,7 +35,7 @@ $noofseatsbooked = $row['SUM(noofmembers)'];
       <li class="talk">Admin</li>
       <li><a href="admin.php">Attendees</a></li>
       <li class="active">Stats</li>
-      <li><a href="Credentials.php">Update</a></li>
+      <!--<li><a href="Credentials.php">Update</a></li>-->
       <li style="float:right"><a href="Signup/logout.php">Log Out</a></li>
    </ul>
 </nav>

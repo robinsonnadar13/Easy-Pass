@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(0);
 require_once "Signup/pdo.php";
 $failure = false; 
 
@@ -30,7 +31,6 @@ if ( ! isset($_SESSION["adminname"] )) {
             ':name' => $_POST['name'],
             ':password' => $hashed));
 
-            session_start();
             $_SESSION['adminname'] = $_POST['name'];
             header('Location: admin.php');
           
