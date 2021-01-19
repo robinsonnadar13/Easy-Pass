@@ -23,7 +23,7 @@ $seats = 100 - $row['SUM(noofmembers)'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Print</title>
+	<title>St. Anthony's Pass - Print</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" href="../Images/Anthony.png">

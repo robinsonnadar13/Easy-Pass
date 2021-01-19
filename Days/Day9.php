@@ -11,7 +11,7 @@ if ( isset($_POST['search'] ) ) {
 }
 
 require '../Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day10");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day9");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
@@ -48,7 +48,7 @@ include "../config.php";
    >St. Anthony Chapel</h1>
 </div>
  <form method='post' action='../download.php'>
- <h3>Day 10</h3>
+ <h3>Day 9</h3>
   <table style='border-collapse:collapse;'>
     <tr>
      <th>Pass No</th>
@@ -61,7 +61,7 @@ include "../config.php";
       $user_arr = array();
     
      include '../Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM day10");
+                        $stmt = $conn->prepare("SELECT * FROM day9");
                         $stmt->execute();
                         $result = $stmt->get_result();
                         while  ($row = $result->fetch_assoc()):

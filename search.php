@@ -15,19 +15,19 @@ if ( isset($_POST['search'] ) ) {
 $namesearched =  $_SESSION['namesearched'];
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
 $seatsbooked = $row['SUM(noofmembers)'];
-$seats = 100 - $row['SUM(noofmembers)'];   
+$seats = 50 - $row['SUM(noofmembers)'];   
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Admin</title>
+	<title>St. Anthony's Pass - Admin</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" href="Images/Anthony.png">
@@ -67,7 +67,7 @@ $seats = 100 - $row['SUM(noofmembers)'];
    </tr>
    <?php
                         include 'Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM booking where name like ? ");
+                        $stmt = $conn->prepare("SELECT * FROM day3 where name like ? ");
                         $stmt->bind_param("s",$namesearched); 
                         $stmt->execute();
                         $result = $stmt->get_result();

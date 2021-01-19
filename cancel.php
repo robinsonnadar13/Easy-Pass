@@ -27,7 +27,7 @@ session_start();
         
         else{
 
-            $sql = "SELECT name FROM booking
+            $sql = "SELECT name FROM day3
             WHERE mobilenumber = :mn AND password = :pw";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
@@ -39,7 +39,7 @@ session_start();
               $failure = "Invalid credentials.";
             }
             else {
-                $sql = "DELETE FROM booking WHERE
+                $sql = "DELETE FROM day3 WHERE
                 mobilenumber = :mn";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array(
@@ -72,7 +72,7 @@ session_start();
             
             else{
     
-				$sql = "SELECT name FROM booking
+				$sql = "SELECT name FROM day3
 				WHERE mobilenumber = :mn AND password = :pw";
 				$stmt = $pdo->prepare($sql);
 				$stmt->execute(array(
@@ -84,7 +84,7 @@ session_start();
 				  $failure1 = "Invalid credentials.";
 				}
 				else {
-					$sql = "DELETE FROM booking WHERE
+					$sql = "DELETE FROM day3 WHERE
 					mobilenumber = :mn";
 					$stmt = $pdo->prepare($sql);
 					$stmt->execute(array(
@@ -102,7 +102,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Cancel</title>
+	<title>St. Anthony's Pass - Cancel</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/png" href="Images/Anthony.png">
@@ -110,7 +110,7 @@ session_start();
     
 </head>
 <body>
-<h1>Quick Pass - Cancel</h1>
+<h1>St. Anthony's Pass - Cancel</h1>
 <div class="login-wrap">
 
 	<div class="login-html">

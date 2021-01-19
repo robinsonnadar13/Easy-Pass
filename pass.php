@@ -24,7 +24,7 @@ $passno = $_SESSION['passno'];
 
 <head>
 
-	<title>Quick Pass</title>
+	<title>St. Anthony's Pass</title>
 
   	<meta charset="utf-8">
 
@@ -102,7 +102,7 @@ $passno = $_SESSION['passno'];
 
           <div class="label">Date</div>
 
-          <div>17th January 2021</div>
+          <div>19th January 2021</div>
 
         </div>
 
@@ -110,7 +110,7 @@ $passno = $_SESSION['passno'];
 
           <div class="label">Time</div>
 
-          <div>6:00pm</div>
+          <div>7:00pm</div>
 
         </div>
 

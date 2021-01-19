@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(0);
 session_start();
 if ( ! isset($_SESSION["adminname"] )) {
@@ -11,10 +12,10 @@ if ( isset($_POST['search'] ) ) {
    return;
 }
 
-$totalseatsyoucanbook = 78;
+$totalseatsyoucanbook = 70;
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
@@ -26,7 +27,7 @@ $seats = $totalseatsyoucanbook - $row['SUM(noofmembers)'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Admin</title>
+	<title>St. Anthony's Pass - Admin</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" href="Images/Anthony.png">
@@ -53,7 +54,7 @@ $seats = $totalseatsyoucanbook - $row['SUM(noofmembers)'];
       <button type="submit" name="search"><i class="fa fa-search"></i></button>
     </form>
     <br />
-    <h3><a style="text-decoration: none; font-size: 20px; color: red;">Day 1</a></h3>
+    <h3><a style="text-decoration: none; font-size: 20px; color: red;">Day 3</a></h3>
     <h3>Number of Seats Booked : <a style="text-decoration: none; font-size: 20px; color: red;"><?php echo htmlentities($seatsbooked); ?></a></h3> 
     <h3>Number of Seats Left : <a style="text-decoration: none; font-size: 20px; color: red;"><?php echo htmlentities($seats); ?></a></h3> 
   </div>
@@ -80,7 +81,7 @@ include "config.php";
      $user_arr = array();
     
      include 'Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM booking");
+                        $stmt = $conn->prepare("SELECT * FROM day3");
                         $stmt->execute();
                         $result = $stmt->get_result();
                         while  ($row = $result->fetch_assoc()):

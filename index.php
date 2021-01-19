@@ -1,8 +1,8 @@
 <?php
 
 
-
 error_reporting(0);
+
 
 date_default_timezone_set("Asia/Kolkata");
 
@@ -20,7 +20,7 @@ $datetostart = "2021-01-09";
 
 
 
-if (new DateTime() < new DateTime("2021-01-16 14:00:00")) {
+if (new DateTime() < new DateTime("2021-01-19 10:00:00")) {
 
 	echo '
 
@@ -34,9 +34,9 @@ if (new DateTime() < new DateTime("2021-01-16 14:00:00")) {
 
   <link rel="icon" type="image/png" href="Images/Anthony.png">
 
-  <title>Quick Pass</title>
+  <title>St.Anthony&#39;s Chapel Pass</title>
 
-  <meta name="description" content="Timeistheremsg" /><meta property="og:type" content="website" />
+  <meta name="description" content="St.Anthony&#39;s Chapel Pass" /><meta property="og:type" content="website" />
 
 
 
@@ -155,9 +155,9 @@ if (new DateTime() < new DateTime("2021-01-16 14:00:00")) {
 
     <h1>You are a little early</h1>
 
-    <h3>Registrations for 18th January Mass will start from <br>
+    <h3>Registrations for 19th January Mass will start <!-- from  --!> <br>
 
-      17th January at 2 pm</h3>
+    <!-- 18th January --!> at 10 am</h3>
 
   </div>
 
@@ -183,13 +183,13 @@ $failure1 = false;
 
 
 
-$totalseatsyoucanbook = 78;
+$totalseatsyoucanbook = 70;
 
 
 
 require 'Signup/Dbconnect.php';
 
-$stmt = $conn->prepare("SELECT MAX(id) FROM booking");
+$stmt = $conn->prepare("SELECT MAX(id) FROM day3");
 
 $stmt->execute();
 
@@ -197,7 +197,7 @@ $result = $stmt->get_result();
 
 $row=$result->fetch_assoc();
 
-$suffix = "D1-";
+$suffix = "D3-";
 
 $pass = 101 + $row['MAX(id)'];  
 
@@ -207,7 +207,7 @@ $passno = $suffix.$pass;
 
 require 'Signup/Dbconnect.php';
 
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
 
 $stmt->execute();
 
@@ -292,10 +292,11 @@ if ( isset($_POST['submit'] ) ) {
 
 
 	else{	
-
+ 
+            
 		
 
-			$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password, passno)
+			$sql = "INSERT INTO day3 (name, mobilenumber, address, noofmembers, password, passno)
 
 			VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 
@@ -411,7 +412,7 @@ if ( isset($_POST['submit'] ) ) {
 
 
 
-					$sql = "INSERT INTO booking (name, mobilenumber, address, noofmembers, password, passno)
+					$sql = "INSERT INTO day3 (name, mobilenumber, address, noofmembers, password, passno)
 
 					VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 
@@ -469,7 +470,7 @@ if ( isset($_POST['submit'] ) ) {
 
 
 
-if (new DateTime() > new DateTime("2021-01-16 14:00:00")) {
+if (new DateTime() > new DateTime("2021-01-19 10:00:00")) {
 
 echo'
 
@@ -479,7 +480,7 @@ echo'
 
 <head>
 
-	<title>Easy-Pass</title>
+	<title>St. Anthony&#39;s Chapel Pass</title>
 
   	<meta charset="utf-8">
 
@@ -516,7 +517,7 @@ echo'
 
 	<div class="login-html">
 
-	<h4 style="color: white; text-align: center;">17<sup>th</sup> January 2021</h4>
+	<h4 style="color: white; text-align: center;">19<sup>th</sup> January 2021</h4>
 
 	<h3 style="color: white; text-align: center;">Number of Seats Left: <a id ="seatsleft" style="color: yellow;">';
 
@@ -772,11 +773,11 @@ echo'
 
 </div>
 
-<!-- <footer>
+ <!-- <footer>
 
    Developed by  <a style="color: yellow;">St. Anthony Community</a>.
 
-</footer> --!>
+ </footer>  --!>
 
 </html>';
 

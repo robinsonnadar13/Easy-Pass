@@ -3,14 +3,14 @@
 error_reporting(0);
 require_once "Signup/pdo.php";
 session_start();
-$totalseatsyoucanbook = 100;
+$totalseatsyoucanbook = 50;
 
 if ( ! isset($_SESSION["adminname"] )) {
     die("ACCESS DENIED");
 }
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM booking");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
@@ -22,7 +22,7 @@ $noofseatsbooked = $row['SUM(noofmembers)'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Admin</title>
+	<title>St. Anthony's Pass - Admin</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" href="Images/Anthony.png">

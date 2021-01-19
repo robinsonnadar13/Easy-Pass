@@ -16,14 +16,14 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
 $seatsbooked = $row['SUM(noofmembers)'];
-$seats = 100 - $row['SUM(noofmembers)'];   
+$seats = 78 - $row['SUM(noofmembers)'];   
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Quick Pass - Print</title>
+	<title>St. Anthony's Pass - Print</title>
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" href="../Images/Anthony.png">
@@ -45,7 +45,7 @@ include "../config.php";
      font: 400 50px/1.3 'Berkshire Swash', Helvetica, sans-serif;
      color: #2b2b2b;
      text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);"
-   >St. Anthony Chapel</h1>
+   >St. Anthony's Chapel</h1>
 </div>
  <form method='post' action='../download.php'>
  <h3>Day 1</h3>
