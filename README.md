@@ -1,4 +1,4 @@
-# Quick-Pass
+# Quick Pass
 
 During the Covid19 pandemic, it becomes difficult to invite people for any event keeping in mind the restrictions on the number of people attending the event.
 
