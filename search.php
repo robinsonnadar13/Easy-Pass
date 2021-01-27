@@ -15,7 +15,7 @@ if ( isset($_POST['search'] ) ) {
 $namesearched =  $_SESSION['namesearched'];
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day10");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
@@ -67,7 +67,7 @@ $seats = 50 - $row['SUM(noofmembers)'];
    </tr>
    <?php
                         include 'Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM day3 where name like ? ");
+                        $stmt = $conn->prepare("SELECT * FROM day10 where name like ? ");
                         $stmt->bind_param("s",$namesearched); 
                         $stmt->execute();
                         $result = $stmt->get_result();

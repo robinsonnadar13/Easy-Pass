@@ -10,7 +10,7 @@ if ( ! isset($_SESSION["adminname"] )) {
 }
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day8");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();

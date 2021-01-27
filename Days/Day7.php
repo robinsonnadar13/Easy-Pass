@@ -49,50 +49,50 @@ include "../config.php";
 </div>
  <form method='post' action='../download.php'>
  <h3>Day 7</h3>
-  <table style='border-collapse:collapse;'>
-    <tr>
-     <th>Pass No</th>
-     <th>Name</th>
-     <th>Mobile Number</th>
-     <th>Address</th>
-     <th>Attendees</th>
-    </tr>
-    <?php 
-      $user_arr = array();
-    
-     include '../Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM day7");
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        while  ($row = $result->fetch_assoc()):
-                            $id = $row['passno'];
-      $uname = $row['name'];
-      $name = $row['mobilenumber'];
-      $gender = $row['address'];
-      $email = $row['noofmembers'];
-       $user_arr[] = array($id,$uname,$name,$gender,$email);
-   ?>
-      <tr>
-       <td><?php echo $id; ?></td>
-       <td><?php echo $uname; ?></td>
-       <td><?php echo $name; ?></td>
-       <td><?php echo $gender; ?></td>
-       <td><?php echo $email; ?></td>
-      </tr>
-   
-   <?php endwhile; ?>
+  <h4>No Registrations Done</h4>
+  <!--<table style='border-collapse:collapse;'>-->
+  <!--  <tr>-->
+  <!--   <th>Pass No</th>-->
+  <!--   <th>Name</th>-->
+  <!--   <th>Mobile Number</th>-->
+  <!--   <th>Address</th>-->
+  <!--   <th>Attendees</th>-->
+  <!--  </tr>-->
   
-   <tr>
-      <td class="activeUser"></td>
-      <td class="username"></td>
-      <td class="email"></a></td>
-      <td>Total</td>
-      <td class="commenter"><?php echo htmlentities($seatsbooked); ?></td>
-   </tr>
-   </table>
-   <input type = "submit" class="stylebutton" value= 'Go Back' name='goback'>
-  <input type = "submit" style="float:right;" class="stylebutton" value= 'Print' name='Print' onclick="window.print()">
-  </form>
+  <!--    $user_arr = array();-->
+    
+  <!--   include '../Signup/Dbconnect.php';-->
+  <!--                      $stmt = $conn->prepare("SELECT * FROM day2");-->
+  <!--                      $stmt->execute();-->
+  <!--                      $result = $stmt->get_result();-->
+  <!--                      while  ($row = $result->fetch_assoc()):-->
+  <!--                          $id = $row['passno'];-->
+  <!--    $uname = $row['name'];-->
+  <!--    $name = $row['mobilenumber'];-->
+  <!--    $gender = $row['address'];-->
+  <!--    $email = $row['noofmembers'];-->
+  <!--     $user_arr[] = array($id,$uname,$name,$gender,$email);-->
+  
+  <!--    <tr>-->
+  <!--     <td><?php echo $id; ?></td>-->
+  <!--     <td><?php echo $uname; ?></td>-->
+  <!--     <td><?php echo $name; ?></td>-->
+  <!--     <td><?php echo $gender; ?></td>-->
+  <!--     <td><?php echo $email; ?></td>-->
+  <!--    </tr>-->
+   
+  
+  <!-- <tr>-->
+  <!--    <td class="activeUser"></td>-->
+  <!--    <td class="username"></td>-->
+  <!--    <td class="email"></a></td>-->
+  <!--    <td>Total</td>-->
+  <!--    <td class="commenter"><?php echo htmlentities($seatsbooked); ?></td>-->
+  <!-- </tr>-->
+  <!-- </table>-->
+  <!-- <input type = "submit" class="stylebutton" value= 'Go Back' name='goback'>-->
+  <!--<input type = "submit" style="float:right;" class="stylebutton" value= 'Print' name='Print' onclick="window.print()">-->
+  <!--</form>-->
  
 </div>
 

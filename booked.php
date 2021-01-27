@@ -44,7 +44,8 @@ h1{font-size:26px}
                 
         <div>
         <h1>Sorry, All Seats have been booked!</h1>
-        Keep Checking, you might get a pass if someone else cancels.
+        <p>Keep Checking, you might get a pass if someone else cancels.</p>
+        <p>You can watch the live stream of the mass on <a style="color: brown;" href="https://youtu.be/QZ3-3fouxQw">https://youtu.be/QZ3-3fouxQw</a></p>
         </div>
         
         <br />
@@ -54,7 +55,9 @@ h1{font-size:26px}
         <!--<div class=" setting-wrap">-->
         <h1>மன்னிக்கவும், அனைத்து இருக்கைகளும் முன்பதிவு செய்யப்பட்டுள்ளன!</h1>
         தொடர்ந்து சோதனை செய்யுங்கள், வேறு யாராவது ரத்துசெய்தால் உங்களுக்கு பாஸ் கிடைக்கும்.
-        </div>
+<p>நீங்கள் நேரடி திருப்பலி ஒளிபரப்பு காண இந்த <a style="color: brown;" href="https://youtu.be/QZ3-3fouxQw">https://youtu.be/QZ3-3fouxQw</a> link ஐ கிளிக் பண்ணவும்.</p>
+
+</div>
         </div>
         <br />
         <br />

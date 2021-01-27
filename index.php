@@ -20,7 +20,7 @@ $datetostart = "2021-01-09";
 
 
 
-if (new DateTime() < new DateTime("2021-01-19 10:00:00")) {
+if (new DateTime() < new DateTime("2021-01-26 12:00:00")) {
 
 	echo '
 
@@ -155,9 +155,7 @@ if (new DateTime() < new DateTime("2021-01-19 10:00:00")) {
 
     <h1>You are a little early</h1>
 
-    <h3>Registrations for 19th January Mass will start <!-- from  --!> <br>
-
-    <!-- 18th January --!> at 10 am</h3>
+    <h3>Registrations for 26<sup>th</sup> January Mass will start at 12 pm</h3>
 
   </div>
 
@@ -189,7 +187,7 @@ $totalseatsyoucanbook = 70;
 
 require 'Signup/Dbconnect.php';
 
-$stmt = $conn->prepare("SELECT MAX(id) FROM day3");
+$stmt = $conn->prepare("SELECT MAX(id) FROM done");
 
 $stmt->execute();
 
@@ -197,7 +195,7 @@ $result = $stmt->get_result();
 
 $row=$result->fetch_assoc();
 
-$suffix = "D3-";
+$suffix = "D10-";
 
 $pass = 101 + $row['MAX(id)'];  
 
@@ -207,7 +205,7 @@ $passno = $suffix.$pass;
 
 require 'Signup/Dbconnect.php';
 
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM done");
 
 $stmt->execute();
 
@@ -296,7 +294,7 @@ if ( isset($_POST['submit'] ) ) {
             
 		
 
-			$sql = "INSERT INTO day3 (name, mobilenumber, address, noofmembers, password, passno)
+			$sql = "INSERT INTO done (name, mobilenumber, address, noofmembers, password, passno)
 
 			VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 
@@ -412,7 +410,7 @@ if ( isset($_POST['submit'] ) ) {
 
 
 
-					$sql = "INSERT INTO day3 (name, mobilenumber, address, noofmembers, password, passno)
+					$sql = "INSERT INTO done (name, mobilenumber, address, noofmembers, password, passno)
 
 					VALUES (:name, :mobilenumber, :address, :noofmembers, :password, :passno)";
 
@@ -470,7 +468,7 @@ if ( isset($_POST['submit'] ) ) {
 
 
 
-if (new DateTime() > new DateTime("2021-01-19 10:00:00")) {
+if (new DateTime() > new DateTime("2021-01-26 12:00:00")) {
 
 echo'
 
@@ -517,7 +515,7 @@ echo'
 
 	<div class="login-html">
 
-	<h4 style="color: white; text-align: center;">19<sup>th</sup> January 2021</h4>
+	<h4 style="color: white; text-align: center;">26<sup>th</sup> January 2021</h4>
 
 	<h3 style="color: white; text-align: center;">Number of Seats Left: <a id ="seatsleft" style="color: yellow;">';
 

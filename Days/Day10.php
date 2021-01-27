@@ -45,7 +45,7 @@ include "../config.php";
      font: 400 50px/1.3 'Berkshire Swash', Helvetica, sans-serif;
      color: #2b2b2b;
      text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);"
-   >St. Anthony Chapel</h1>
+   >St. Anthony's Chapel</h1>
 </div>
  <form method='post' action='../download.php'>
  <h3>Day 10</h3>

@@ -27,7 +27,7 @@ session_start();
         
         else{
 
-            $sql = "SELECT name FROM day3
+            $sql = "SELECT name FROM day10
             WHERE mobilenumber = :mn AND password = :pw";
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
@@ -39,7 +39,7 @@ session_start();
               $failure = "Invalid credentials.";
             }
             else {
-                $sql = "DELETE FROM day3 WHERE
+                $sql = "DELETE FROM day10 WHERE
                 mobilenumber = :mn";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array(
@@ -72,7 +72,7 @@ session_start();
             
             else{
     
-				$sql = "SELECT name FROM day3
+				$sql = "SELECT name FROM day10
 				WHERE mobilenumber = :mn AND password = :pw";
 				$stmt = $pdo->prepare($sql);
 				$stmt->execute(array(
@@ -84,7 +84,7 @@ session_start();
 				  $failure1 = "Invalid credentials.";
 				}
 				else {
-					$sql = "DELETE FROM day3 WHERE
+					$sql = "DELETE FROM day10 WHERE
 					mobilenumber = :mn";
 					$stmt = $pdo->prepare($sql);
 					$stmt->execute(array(

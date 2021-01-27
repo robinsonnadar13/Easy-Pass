@@ -15,7 +15,7 @@ if ( isset($_POST['search'] ) ) {
 $totalseatsyoucanbook = 70;
 
 require 'Signup/Dbconnect.php';
-$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day3");
+$stmt = $conn->prepare("SELECT SUM(noofmembers) FROM day10");
 $stmt->execute();
 $result = $stmt->get_result();
 $row=$result->fetch_assoc();
@@ -54,7 +54,7 @@ $seats = $totalseatsyoucanbook - $row['SUM(noofmembers)'];
       <button type="submit" name="search"><i class="fa fa-search"></i></button>
     </form>
     <br />
-    <h3><a style="text-decoration: none; font-size: 20px; color: red;">Day 3</a></h3>
+    <h3><a style="text-decoration: none; font-size: 20px; color: red;">Day 10</a></h3>
     <h3>Number of Seats Booked : <a style="text-decoration: none; font-size: 20px; color: red;"><?php echo htmlentities($seatsbooked); ?></a></h3> 
     <h3>Number of Seats Left : <a style="text-decoration: none; font-size: 20px; color: red;"><?php echo htmlentities($seats); ?></a></h3> 
   </div>
@@ -81,7 +81,7 @@ include "config.php";
      $user_arr = array();
     
      include 'Signup/Dbconnect.php';
-                        $stmt = $conn->prepare("SELECT * FROM day3");
+                        $stmt = $conn->prepare("SELECT * FROM day10");
                         $stmt->execute();
                         $result = $stmt->get_result();
                         while  ($row = $result->fetch_assoc()):

@@ -2,13 +2,13 @@
 
 if(isset($_POST['Export'])){
 
-$filename = 'Day3-Attendees.csv';
+$filename = 'day10-Attendees.csv';
 $export_data = unserialize($_POST['export_data']);
 
 // file creation
 $file = fopen($filename,"w");
 fputcsv($file, array("St. Anthony's Chapel")); 
-fputcsv($file, array('Day 3')); 
+fputcsv($file, array('Day 10')); 
 fputcsv($file, array()); 
 fputcsv($file, array('Pass No', 'Name', 'Mobile Number', 'Address', 'Attendees'));
 fputcsv($file, array());  
