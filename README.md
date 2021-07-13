@@ -8,8 +8,8 @@ Website link: https://quickpass29.000webhostapp.com/index.php
 
 ## Demonstration
 
-### 1) Generate Pass
-<img src="./Images/Generate Pass.gif" alt="Generate Pass"/>
+### 1) Book Pass
+<img src="./Images/Book Pass.gif" alt="Book Pass"/>
 
 <br />
 
