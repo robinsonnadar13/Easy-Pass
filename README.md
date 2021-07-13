@@ -6,18 +6,18 @@ Easy Pass helps you solve this problem, send a link to your guests asking them t
 
 Website link: https://quickpass29.000webhostapp.com/index.php
 
-<!-- ## Demonstration
+## Demonstration
 
 ### 1) Generate Pass
-<img src="./Images/Play Game.gif" alt="Play game"/>
+<img src="./Images/Generate Pass.gif" alt="Generate Pass"/>
 
 <br />
 
 ### 2) Admin Panel
-<img src="./Images/Create game.gif" alt="Create game"/>
+<img src="./Images/Admin.gif" alt="Admin Panel"/>
 
 <br />
- -->
+
 ## Installation
 
 - Install MAMP or WAMP server
