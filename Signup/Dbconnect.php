@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli("localhost", "root", "root", "quickpass");
+$conn = new mysqli("localhost:3308", "root", "root", "quickpass");
 
 if($conn->connect_error){
 

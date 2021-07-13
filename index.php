@@ -515,7 +515,7 @@ echo'
 
 	<div class="login-html">
 
-	<h4 style="color: white; text-align: center;">26<sup>th</sup> January 2021</h4>
+	<h4 style="color: white; text-align: center;">7<sup>th</sup> February 2021</h4>
 
 	<h3 style="color: white; text-align: center;">Number of Seats Left: <a id ="seatsleft" style="color: yellow;">';
 
@@ -717,7 +717,7 @@ echo'
 
 </div>
 
-</body>
+
 
 <br />
 
@@ -771,11 +771,7 @@ echo'
 
 </div>
 
- <!-- <footer>
-
-   Developed by  <a style="color: yellow;">St. Anthony Community</a>.
-
- </footer>  --!>
+</body>
 
 </html>';
 
