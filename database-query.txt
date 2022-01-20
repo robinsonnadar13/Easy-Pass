@@ -1,8 +1,0 @@
-CREATE TABLE booking (
-    id int NOT NULL AUTO_INCREMENT,
-    name varchar(255),
-    mobilenumber int UNIQUE,
-    address varchar(255),
-    noofmembers int,
-    password varchar(255)
-);
