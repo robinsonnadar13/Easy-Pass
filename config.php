@@ -1,12 +1,12 @@
 <?php
 
-$host = "localhost:3308"; /* Host name */
+$host = "localhost"; /* Host name */
 
-$user = "root"; /* User */
+$user = "Enter Username here"; /* User */
 
-$password = "root"; /* Password */
+$password = "Enter Password here"; /* Password */
 
-$dbname = "quickpass"; /* Database name */
+$dbname = "Enter Database Name here"; /* Database name */
 
 
 
