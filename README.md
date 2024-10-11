@@ -6,8 +6,6 @@ Easy Pass helps you solve this problem, send a link to your guests asking them t
 
 Easily Customizable, Attractive UI and easy to configure!!!
 
-Website link: https://quickpass29.000webhostapp.com/index.php
-
 ## Demonstration
 
 ### 1) Book Pass
